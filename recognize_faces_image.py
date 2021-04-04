@@ -8,6 +8,7 @@ import cv2
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--encodings", required=True, help="path to serialized db of facial encodings")
 ap.add_argument("-i", "--image", required=True, help="path to input image")
+ap.add_argument("-t", "--tolerance", type=float, default=0.5, help="tolerance for face detection")
 ap.add_argument("-d", "--detection-method", type=str, default="cnn",
                 help="face detecttion model to use: either 'hog' or 'cnn'")
 args = vars(ap.parse_args())
@@ -33,7 +34,7 @@ names = []
 for encoding in encodings:
     # attempt to match each face in the input image to our known
     # encodings
-    matches = face_recognition.compare_faces(data["encodings"], encoding)
+    matches = face_recognition.compare_faces(data["encodings"], encoding, args["tolerance"])
     name = "Unknown"
     # check to see if we have found a match
     if True in matches:
