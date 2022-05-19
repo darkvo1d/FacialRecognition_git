@@ -1,6 +1,6 @@
-# FacialRecognition_git
+# Exam Proctoring System
 
-Aim is to detect faces and recognize them based on the pre train model with a given dataset
+Aim is to detect if the person is using any unfair means while attempting an online exam.
 
 # Libraries used
 - face_recognition
